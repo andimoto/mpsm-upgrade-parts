@@ -1,4 +1,4 @@
-# mpsm-dual-40mm-fan-holder
+# Dual 40mm fan shroud for Monoprice Selet Mini (v2)
 
 __More fans go brrrrr^2!!!__
 

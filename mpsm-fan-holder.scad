@@ -18,7 +18,7 @@ coolerBlowOutX=25;
 coolerBlowOutZPos=nozzleBlowOutZPos+22;
 coolerBlowInPos=fanOuterXY/2 + 13;
 
-screwR=3/2; //3mm screws
+screwR=2.8/2; //3mm screws
 screwH=6; // fan height=10 + screwH=6 >> use M3x16
 screwDistance=32; // each screw has a distance of 32mm to next screw (noctua 40mm fan)
 
@@ -56,9 +56,23 @@ module sideCutout()
 /* translate([-holderX/2,0,coolerBlowOutZPos]) sideCutout(); */
 
 
+module rubberCutout(rad=5)
+{
+  intersection() {
+    sphere(r=rad);
+    cube([rad*2,rad*2,rad]);
+  }
 
+}
+/* translate([20,1,holderZ-1]) rotate([0,180,0]) rubberCutout(rad=8);
+translate([-20,1,holderZ-1]) rotate([0,180,-90]) rubberCutout(rad=8);
+translate([-20,holderY-1,holderZ-1]) rotate([0,180,180]) rubberCutout(rad=9);
+translate([20,holderY-1,holderZ-1]) rotate([0,180,90]) rubberCutout(rad=9);
 
-module fanScrews()
+translate([20,holderY-1,coolerBlowOutZPos-1-8]) rotate([180,180,0]) rubberCutout(rad=8);
+translate([-20,holderY-1,coolerBlowOutZPos-1-8]) rotate([180,180,90]) rubberCutout(rad=8); */
+
+module fanScrews(screwR=1.4)
 {
   translate([-screwDistance/2,0,0]) cylinder(r=screwR, h=screwH, center=false);
   translate([screwDistance/2,0,0]) cylinder(r=screwR, h=screwH, center=false);
@@ -115,11 +129,11 @@ module fanHolder(screwedTopFan=false, screwedPartFan=false) {
     /* using screws (screws provided by noctua are not long enougth) */
     if(screwedTopFan == true)
     {
-      translate([0,(fanOuterXY-screwDistance)/2,holderZ-screwH+0.1]) fanScrews();
+      translate([0,(fanOuterXY-screwDistance)/2,holderZ-screwH+0.1]) fanScrews(screwR=1.4);
     }
     if(screwedPartFan == true)
     {
-      translate([0,fanOuterXY+0.1,coolerBlowInPos-screwDistance/2]) rotate([90,0,0]) fanScrews();
+      translate([0,fanOuterXY+0.1,coolerBlowInPos-screwDistance/2]) rotate([90,0,0]) fanScrews(screwR=1.4);
     }
 
     /* nozzleCam place holder */
@@ -134,21 +148,32 @@ module fanHolder(screwedTopFan=false, screwedPartFan=false) {
     translate([-holderX/2+2,5,coolerBlowOutZPos+coolerBlowOutZPos/2+sideScrewR/2]) rotate([0,90,0])
     cylinder(r=sideScrewR, h=sideScrewH,center=false);
 
-  }
 
+    /* using noctua rubber strings provided with the fans (easy to mount, no screws needed)  */
+    if(screwedTopFan == false)
+    {
+      translate([0,(fanOuterXY-screwDistance)/2,holderZ-screwH+0.1]) fanScrews(screwR=2);
+
+      translate([20,1,holderZ-1]) rotate([0,180,0]) rubberCutout(rad=7);
+      translate([-20,1,holderZ-1]) rotate([0,180,-90]) rubberCutout(rad=7);
+      translate([-20,holderY-1,holderZ-1]) rotate([0,180,180]) rubberCutout(rad=9);
+      translate([20,holderY-1,holderZ-1]) rotate([0,180,90]) rubberCutout(rad=9);
+    }
+    if(screwedPartFan == false)
+    {
+      translate([0,fanOuterXY+0.1,coolerBlowInPos-screwDistance/2]) rotate([90,0,0]) fanScrews(screwR=2);
+
+      translate([20,holderY-1,coolerBlowOutZPos-1-8]) rotate([180,180,0]) rubberCutout(rad=8);
+      translate([-20,holderY-1,coolerBlowOutZPos-1-8]) rotate([180,180,90]) rubberCutout(rad=8);
+    }
+  }
 
   /* sled for holding holder in place!  */
   translate([0,0.3,coolerBlowOutZPos]) rotate([90,0,0]) sled();
 
-  /* using noctua rubber strings provided with the fans (easy to mount, no screws needed)  */
-  if(screwedTopFan == false)
-  {
-
-  }
-
 }
 
 /* fanMock(); */
-translate([0,0,0]) fanHolder(screwedTopFan=true,screwedPartFan=true);
+translate([0,0,0]) fanHolder(screwedTopFan=false,screwedPartFan=false);
 /* translate([-holderX/2,0,holderZ+1]) color("brown") fanMock();
 translate([-holderX/2,holderY+1,fanOuterXY]) rotate([-90,0,0]) color("brown") fanMock(); */

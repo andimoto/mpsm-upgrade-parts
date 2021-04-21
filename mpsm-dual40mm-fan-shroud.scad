@@ -64,13 +64,6 @@ module rubberCutout(rad=5)
   }
 
 }
-/* translate([20,1,holderZ-1]) rotate([0,180,0]) rubberCutout(rad=8);
-translate([-20,1,holderZ-1]) rotate([0,180,-90]) rubberCutout(rad=8);
-translate([-20,holderY-1,holderZ-1]) rotate([0,180,180]) rubberCutout(rad=9);
-translate([20,holderY-1,holderZ-1]) rotate([0,180,90]) rubberCutout(rad=9);
-
-translate([20,holderY-1,coolerBlowOutZPos-1-8]) rotate([180,180,0]) rubberCutout(rad=8);
-translate([-20,holderY-1,coolerBlowOutZPos-1-8]) rotate([180,180,90]) rubberCutout(rad=8); */
 
 module fanScrews(screwR=1.4)
 {
@@ -92,13 +85,14 @@ module fanHolder(screwedTopFan=false, screwedPartFan=false) {
         difference() {
           translate([-holderX/2+edgeR,edgeR,edgeR]) cube([holderX-edgeR*2,holderY-edgeR*2,holderZ-edgeR*2]);
           translate([-holderX/2,0,-17]) rotate([20,0,0]) cube([holderX,holderY*2,15]);
+          translate([-holderX/2,0,7]) rotate([45,0,0]) cube([holderX,10,10]);
         }
         /* translate([-holderX/2+edgeR-4,edgeR,edgeR]) cube([10,holderY-edgeR*2,13]); */
         /* nozzle side */
         hull()
         {
           translate([-nozzleBlowOutX/2-0.5,0,1]) cube([nozzleBlowOutX+1,1,3]);
-          translate([-nozzleBlowOutX/2-0.5,-5,-2]) rotate([15,0,0]) cube([nozzleBlowOutX+1,1,3]);
+          translate([-nozzleBlowOutX/2-0.5,-4,-1.5]) rotate([15,0,0]) cube([nozzleBlowOutX+1,1,3]);
         }
       }
       sphere(r=edgeR);
@@ -172,17 +166,25 @@ module fanHolder(screwedTopFan=false, screwedPartFan=false) {
       translate([-20,holderY-1,coolerBlowOutZPos-1-8]) rotate([180,180,90]) rubberCutout(rad=8);
     }
     translate([-35,50,20]) rotate([117,-40,4]) cylinder(r=4,h=65,center=false);
+    translate([-holderX+11,0,-20]) rotate([45,0,0]) cube([holderX/2,holderX/2,holderX/2]);
+    translate([9,0,-20]) rotate([45,0,0]) cube([holderX/2,holderX/2,holderX/2]);
+
+
+    /* reduce weight */
+    /* translate([-holderX/2,0,7]) rotate([45,0,0]) cube([holderX,10,10]); */
   }
 
   /* sled for holding holder in place!  */
   translate([0,0.3,coolerBlowOutZPos]) rotate([90,0,0]) sled();
 
   difference() {
-    translate([-35,50,20]) rotate([117,-40,4]) cylinder(r=6,h=58,center=false);
+    translate([-35,50,20]) rotate([117,-40,4]) cylinder(r=6,h=57,center=false);
     translate([-35,50,20]) rotate([117,-40,4]) cylinder(r=4,h=61,center=false);
     translate([-holderX*2,holderY,5]) cube([holderX*2,holderX,holderX]);
     translate([-holderX-10,-holderY,-10]) cube([holderX,holderX,holderX/2]);
     translate([-holderX,-holderY/2,-22]) cube([holderX,holderX,holderX/2]);
+    translate([-holderX+11,0,-20]) cube([holderX/2,holderX/2,holderX/2]);
+    translate([-holderX+11,0,-20]) rotate([45,0,0]) cube([holderX/2,holderX/2,holderX/2]);
   }
 
 }

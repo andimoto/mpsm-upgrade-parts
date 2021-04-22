@@ -178,16 +178,22 @@ module fanHolder(screwedTopFan=false, screwedPartFan=false) {
   translate([0,0.3,coolerBlowOutZPos]) rotate([90,0,0]) sled();
 
   difference() {
-    translate([-35,50,20]) rotate([117,-40,4]) cylinder(r=6,h=57,center=false);
-    translate([-35,50,20]) rotate([117,-40,4]) cylinder(r=4,h=61,center=false);
-    translate([-holderX*2,holderY,5]) cube([holderX*2,holderX,holderX]);
-    translate([-holderX-10,-holderY,-10]) cube([holderX,holderX,holderX/2]);
-    translate([-holderX,-holderY/2,-22]) cube([holderX,holderX,holderX/2]);
+    translate([-35,50,20]) rotate([117,-40,4])
+    union()
+    {
+      difference() {
+        cylinder(r=6,h=57,center=false);
+        cylinder(r=4,h=61,center=false);
+        translate([0,0,30]) rotate([0,-90,0]) cylinder(r=1.5,h=8,center=false);
+      }
+    }
+    translate([-holderX-10,holderY,5]) cube([holderX,holderX,holderX]);
     translate([-holderX+11,0,-20]) cube([holderX/2,holderX/2,holderX/2]);
     translate([-holderX+11,0,-20]) rotate([45,0,0]) cube([holderX/2,holderX/2,holderX/2]);
   }
-
 }
+
+
 
 /* #translate([0,0,2]) rotate([115,0,0]) cylinder(r=1, h=50, center=false);
 #translate([-35,50,20]) rotate([117,-40,4]) cylinder(r=1, h=100, center=false); */

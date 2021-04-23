@@ -197,8 +197,8 @@ module fanHolder(screwedTopFan=false, screwedPartFan=false, nozzleCam=true) {
       union()
       {
         difference() {
-          cylinder(r=6,h=57,center=false);
-          #cylinder(r=4,h=60,center=false);
+          cylinder(r=6,h=60,center=false);
+          cylinder(r=4,h=60,center=false);
           translate([0,0,30]) rotate([0,-90,0]) cylinder(r=1.5,h=8,center=false);
         }
       }

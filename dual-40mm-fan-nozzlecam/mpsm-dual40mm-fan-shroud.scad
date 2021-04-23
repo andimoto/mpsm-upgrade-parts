@@ -192,15 +192,22 @@ module fanHolder(screwedTopFan=false, screwedPartFan=false, nozzleCam=true) {
 
   if(nozzleCam == true)
   {
-    difference() {
-      translate([nozzleCamCylinderX,nozzleCamCylinderY,nozzleCamCylinderZ]) rotate([nozzleCamRotateX,nozzleCamRotateY,nozzleCamRotateZ])
-      union()
-      {
-        difference() {
-          cylinder(r=6,h=60,center=false);
-          cylinder(r=4,h=60,center=false);
-          translate([0,0,30]) rotate([0,-90,0]) cylinder(r=1.5,h=8,center=false);
-        }
+      difference() {
+        union()
+        {
+          difference() {
+            union()
+            {
+              translate([-holderX-5,holderY-5,17]) cube([26,5,5]);
+              translate([nozzleCamCylinderX,nozzleCamCylinderY,nozzleCamCylinderZ])
+              rotate([nozzleCamRotateX,nozzleCamRotateY,nozzleCamRotateZ])
+                cylinder(r=6,h=60,center=false);
+            }
+            translate([nozzleCamCylinderX,nozzleCamCylinderY,nozzleCamCylinderZ])
+            rotate([nozzleCamRotateX,nozzleCamRotateY,nozzleCamRotateZ])
+              cylinder(r=4,h=60,center=false);
+            translate([0,0,30]) rotate([0,-90,0]) cylinder(r=1.5,h=8,center=false);
+          }
       }
       translate([-holderX-20,holderY,5]) cube([holderX,holderX,holderX]);
       translate([-holderX+11,0,-20]) cube([holderX/2,holderX/2,holderX/2]);
@@ -208,6 +215,7 @@ module fanHolder(screwedTopFan=false, screwedPartFan=false, nozzleCam=true) {
     }
   }
 }
+
 
 
 

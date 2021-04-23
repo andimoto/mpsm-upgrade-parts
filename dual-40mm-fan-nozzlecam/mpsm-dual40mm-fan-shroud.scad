@@ -25,6 +25,14 @@ screwDistance=32; // each screw has a distance of 32mm to next screw (noctua 40m
 sideScrewR=3/2;
 sideScrewH=3;
 
+nozzleCamCylinderX=-55;
+nozzleCamCylinderY=45;
+nozzleCamCylinderZ=25;
+
+nozzleCamRotateX=120;
+nozzleCamRotateY=-40;
+nozzleCamRotateZ=20;
+
 module fanMock(fanXY=40,fanH=11)
 {
   difference() {
@@ -141,10 +149,11 @@ module fanHolder(screwedTopFan=false, screwedPartFan=false, nozzleCam=true) {
     translate([-holderX/2,0,coolerBlowOutZPos]) sideCutout();
     translate([holderX/2-2,0,coolerBlowOutZPos]) sideCutout();
 
-    translate([holderX/2-sideScrewH-2,5,coolerBlowOutZPos+coolerBlowOutZPos/2+sideScrewR/2]) rotate([0,90,0])
+    /* screw holes for clamps */
+    translate([holderX/2-sideScrewH-2,3,coolerBlowOutZPos+coolerBlowOutZPos/2+sideScrewR/2]) rotate([0,90,0])
     cylinder(r=sideScrewR, h=sideScrewH,center=false);
 
-    translate([-holderX/2+2,5,coolerBlowOutZPos+coolerBlowOutZPos/2+sideScrewR/2]) rotate([0,90,0])
+    translate([-holderX/2+2,3,coolerBlowOutZPos+coolerBlowOutZPos/2+sideScrewR/2]) rotate([0,90,0])
     cylinder(r=sideScrewR, h=sideScrewH,center=false);
 
 
@@ -168,7 +177,7 @@ module fanHolder(screwedTopFan=false, screwedPartFan=false, nozzleCam=true) {
 
     if(nozzleCam == true)
     {
-      translate([-35,50,20]) rotate([117,-40,4]) cylinder(r=4,h=65,center=false);
+      translate([nozzleCamCylinderX,nozzleCamCylinderY,nozzleCamCylinderZ]) rotate([nozzleCamRotateX,nozzleCamRotateY,nozzleCamRotateZ]) cylinder(r=4,h=65,center=false);
     }
     translate([-holderX+11,0,-20]) rotate([45,0,0]) cube([holderX/2,holderX/2,holderX/2]);
     translate([9,0,-20]) rotate([45,0,0]) cube([holderX/2,holderX/2,holderX/2]);
@@ -184,16 +193,16 @@ module fanHolder(screwedTopFan=false, screwedPartFan=false, nozzleCam=true) {
   if(nozzleCam == true)
   {
     difference() {
-      translate([-35,50,20]) rotate([117,-40,4])
+      translate([nozzleCamCylinderX,nozzleCamCylinderY,nozzleCamCylinderZ]) rotate([nozzleCamRotateX,nozzleCamRotateY,nozzleCamRotateZ])
       union()
       {
         difference() {
           cylinder(r=6,h=57,center=false);
-          cylinder(r=4,h=61,center=false);
+          #cylinder(r=4,h=60,center=false);
           translate([0,0,30]) rotate([0,-90,0]) cylinder(r=1.5,h=8,center=false);
         }
       }
-      translate([-holderX-10,holderY,5]) cube([holderX,holderX,holderX]);
+      translate([-holderX-20,holderY,5]) cube([holderX,holderX,holderX]);
       translate([-holderX+11,0,-20]) cube([holderX/2,holderX/2,holderX/2]);
       translate([-holderX+11,0,-20]) rotate([45,0,0]) cube([holderX/2,holderX/2,holderX/2]);
     }
@@ -206,6 +215,6 @@ module fanHolder(screwedTopFan=false, screwedPartFan=false, nozzleCam=true) {
 #translate([-35,50,20]) rotate([117,-40,4]) cylinder(r=1, h=100, center=false); */
 
 /* fanMock(); */
-translate([0,0,0]) fanHolder(screwedTopFan=true,screwedPartFan=true, nozzleCam=false);
+translate([0,0,0]) fanHolder(screwedTopFan=true,screwedPartFan=true, nozzleCam=true);
 /* translate([-holderX/2,0,holderZ+1]) color("brown") fanMock();
 translate([-holderX/2,holderY+1,fanOuterXY]) rotate([-90,0,0]) color("brown") fanMock(); */

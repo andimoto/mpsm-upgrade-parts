@@ -1,6 +1,18 @@
-# Carrier Plate for a Raspberry Pi with OSOYOO 3.5 inch display
+# Carrier Plate for a Raspberry Pi + Display Case
 
-This carrier gets mounted on the front of the monoprice select mini to carry a RPi with Display (running Octodash)
+This carrier gets mounted on the front of the monoprice select mini to carry a RPi with Display (running Octodash, Octoscreen, etc).
+
+
+I used this RPi 4 with a OSOYOO 3.5 inch touch screen display in this case https://www.prusaprinters.org/de/prints/61558-ifactory-one-pi-4b-case . This RPi4 case fits on this carrier.
+
+
+__Note:__
+Carrier Version __A__ is used on my MPSM where I also mounted a filament guide. The mounting plates on top have different thickness.
+If all screws on top of your MPSM are free, use Version __B__.
+
+<br>
+
+![](001.png)
 
 # LICENSE
 

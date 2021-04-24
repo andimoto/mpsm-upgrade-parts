@@ -47,6 +47,7 @@ module sled()
   translate([-15-2,0,0]) cube([2,25,1.7]);
   translate([15,0,0]) cube([2,25,1.7]);
   translate([-25/2,25+7,0]) cube([25,2,1.7]);
+  translate([-25/2,25+7-34-2,-3+1.7]) cube([25,2,3]);
 }
 /* sled(); */
 
@@ -212,7 +213,14 @@ module fanHolder(screwedTopFan=false, screwedPartFan=false, nozzleCam=true) {
             translate([nozzleCamCylinderX,nozzleCamCylinderY,nozzleCamCylinderZ])
             rotate([nozzleCamRotateX,nozzleCamRotateY,nozzleCamRotateZ])
               cylinder(r=4,h=60,center=false);
-            translate([0,0,30]) rotate([0,-90,0]) cylinder(r=1.5,h=8,center=false);
+
+            /* hole for locking endoscope camera in tube */
+            translate([nozzleCamCylinderX,nozzleCamCylinderY,nozzleCamCylinderZ])
+            rotate([nozzleCamRotateX,nozzleCamRotateY,nozzleCamRotateZ])
+            union()
+            {
+              translate([0,0,30]) rotate([0,-90,45]) cylinder(r=1.5,h=8,center=false);
+            }
 
             translate([nozzleCamCylinderX,nozzleCamCylinderY,nozzleCamCylinderZ])
             rotate([nozzleCamRotateX,nozzleCamRotateY,nozzleCamRotateZ])
@@ -229,11 +237,6 @@ module fanHolder(screwedTopFan=false, screwedPartFan=false, nozzleCam=true) {
 
 
 
-
-/* #translate([0,0,2]) rotate([115,0,0]) cylinder(r=1, h=50, center=false);
-#translate([-35,50,20]) rotate([117,-40,4]) cylinder(r=1, h=100, center=false); */
-
-/* fanMock(); */
-translate([0,0,0]) fanHolder(screwedTopFan=true,screwedPartFan=true, nozzleCam=false);
-/* translate([-holderX/2,0,holderZ+1]) color("brown") fanMock();
-translate([-holderX/2,holderY+1,fanOuterXY]) rotate([-90,0,0]) color("brown") fanMock(); */
+translate([0,0,holderY])
+/* rotate([-90,0,0]) */
+fanHolder(screwedTopFan=true,screwedPartFan=true, nozzleCam=true);

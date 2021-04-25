@@ -183,7 +183,7 @@ module fanHolder(nozzleCam=true) {
             rotate([nozzleCamRotateX,nozzleCamRotateY,nozzleCamRotateZ])
             union()
             {
-              translate([0,0,30]) rotate([0,-90,45]) cylinder(r=1.5,h=8,center=false);
+              translate([0,0,30]) rotate([0,-90,-90]) cylinder(r=1.5,h=8,center=false);
             }
 
             translate([nozzleCamCylinderX,nozzleCamCylinderY,nozzleCamCylinderZ])

@@ -96,7 +96,7 @@ module fanHolder(nozzleCam=true) {
         hull()
         {
           translate([-nozzleBlowOutX/2-0.5,0,1]) cube([nozzleBlowOutX+1,1,3]);
-          translate([-nozzleBlowOutX/2-0.5,-4,-1.5]) rotate([15,0,0]) cube([nozzleBlowOutX+1,1,3]);
+          translate([-nozzleBlowOutX/2-0.5,-2,-1]) rotate([15,0,0]) cube([nozzleBlowOutX+1,1,1.5]);
         }
       }
       sphere(r=edgeR);
@@ -108,14 +108,14 @@ module fanHolder(nozzleCam=true) {
       /* fan side */
       hull()
       {
-        translate([-nozzleBlowOutX/2,0,nozzleBlowOutZPos]) cube([nozzleBlowOutX,1,2]);
         translate([0,40-1+0.1,coolerBlowInPos]) rotate([-90,0,0]) cylinder(r=fanInnerR, h=1, center=false);
+        translate([-nozzleBlowOutX/2,0,nozzleBlowOutZPos]) cube([nozzleBlowOutX,1,2]);
       }
       /* nozzle side */
       hull()
       {
         translate([-nozzleBlowOutX/2,0,1]) cube([nozzleBlowOutX,1,2]);
-        translate([-nozzleBlowOutX/2,-5-edgeR-1,-2]) rotate([14,0,0]) cube([nozzleBlowOutX,1,2]);
+        translate([-nozzleBlowOutX/2,-2-edgeR-1,-1.4]) rotate([14,0,0]) cube([nozzleBlowOutX,1,1]);
       }
     }
 
@@ -201,6 +201,6 @@ module fanHolder(nozzleCam=true) {
 
 
 
-translate([0,0,holderY])
-rotate([-90,0,0])
-fanHolder(nozzleCam=true);
+/* translate([0,0,holderY]) */
+/* rotate([-90,0,0]) */
+fanHolder(nozzleCam=false);

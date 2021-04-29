@@ -10,11 +10,16 @@ RPi 4 Case: https://www.thingiverse.com/thing:3714695
 RPi 3 Case: https://www.thingiverse.com/thing:922740
 
 __Note:__
-Carrier Version __A__ is used on my MPSM where I also mounted a filament guide. The mounting plates on top have different thickness.
+Carrier Version __A__ is used on my MPSM where I have filament guide mounted on. The mounting plates on top have different thickness.
 If all screws on top of your MPSM are free, use Version __B__.
+If you want to print this carrier on your MPSM you can print the Versions with 110mm. The 40mm fan can sill be mounted.
+
+Use 3mm screws. For mounting the carrier on the MPSM I used M3x20 and for the rest M3x10.
+
 
 <br>
 
+![](000.png)
 ![](001.png)
 ![](002.png)
 

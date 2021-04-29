@@ -36,7 +36,7 @@ module fanScrews(screwR=1.4)
 
 
 
-module rpi_holder()
+module carrier()
 {
   difference()
   {
@@ -59,7 +59,7 @@ module rpi_holder()
     translate([0,mountThickness-2,plateThickness]) cube([(holderX-extruderX)/2,2,screwPrinterGap+screwPrintergapExtra]);
 
     /* piCase mounting screws */
-    #translate([(holderX-piCaseHoleDist)/2,holderY-piCaseHoleY,0])
+    translate([(holderX-piCaseHoleDist)/2,holderY-piCaseHoleY,0])
     union()
     {
       cylinder(r=1.5,h=plateThickness);
@@ -145,7 +145,7 @@ module adapter()
         cylinder(r=14/2,h=adapterZ);
         translate([0,50,0]) cylinder(r=14/2,h=adapterZ);
       }
-      
+
     }
     translate([14+(55-32)/2,5,0])
     union()
@@ -158,14 +158,15 @@ module adapter()
 }
 
 
+translate([100,0,0])
 adapter();
-/* rpi_holder(); */
 
+/* normal size */
+carrier();
 
-
-
-/* test */
-/* difference() {
-  rpi_holder();
-  translate([0,10,0]) cube([holderX,holderY,30]);
-} */
+/* printable on MPSM print bed */
+translate([-100,0,0])
+difference() {
+  carrier();
+  translate([0,110,0]) cube([holderX,holderY,30]);
+}

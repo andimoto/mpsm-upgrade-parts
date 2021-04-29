@@ -24,6 +24,7 @@ fanScrewR=2.8/2; //3mm screws
 fanScrewH=plateThickness; // fan height=10 + screwH=6 >> use M3x16
 fanScrewDistance=32; // each screw has a distance of 32mm to next screw (noctua 40mm fan)
 fanSizeXY=40;
+fanSizeZ=10;
 
 module fanScrews(screwR=1.4)
 {
@@ -58,7 +59,7 @@ module rpi_holder()
     translate([0,mountThickness-2,plateThickness]) cube([(holderX-extruderX)/2,2,screwPrinterGap+screwPrintergapExtra]);
 
     /* piCase mounting screws */
-    translate([(holderX-piCaseHoleDist)/2,holderY-piCaseHoleY,0])
+    #translate([(holderX-piCaseHoleDist)/2,holderY-piCaseHoleY,0])
     union()
     {
       cylinder(r=1.5,h=plateThickness);
@@ -92,8 +93,75 @@ module rpi_holder()
   }
 }
 
+adapterZ=4;
 
-rpi_holder();
+module adapterarm()
+{
+  hull()
+  {
+    cube([14,100,adapterZ]);
+    translate([14/2,100,0]) cylinder(r=14/2, h=adapterZ);
+  }
+}
+
+module rpiCaseHoles()
+{
+  union()
+  {
+    cylinder(r=1.4,h=adapterZ+0.1);
+    translate([7+55+7,0,0]) cylinder(r=1.4,h=adapterZ+0.1);
+  }
+
+  translate([0,75,0])
+  union()
+  {
+    cylinder(r=1.4,h=adapterZ+0.1);
+    translate([7+55+7,0,0]) cylinder(r=1.4,h=adapterZ+0.1);
+  }
+}
+
+
+
+module adapter()
+{
+  difference() {
+    union()
+    {
+      adapterarm();
+      translate([62+7,0,0]) adapterarm();
+      translate([14,0,0]) cube([62-7,10,adapterZ]);
+
+      /* stab */
+      translate([14,25,0])
+      hull()
+      {
+        cylinder(r=14/2,h=adapterZ);
+        translate([0,50,0]) cylinder(r=14/2,h=adapterZ);
+      }
+      /* stab */
+      translate([14+55,25,0])
+      hull()
+      {
+        cylinder(r=14/2,h=adapterZ);
+        translate([0,50,0]) cylinder(r=14/2,h=adapterZ);
+      }
+      
+    }
+    translate([14+(55-32)/2,5,0])
+    union()
+    {
+      cylinder(r=1.5,h=adapterZ+0.1);
+      translate([piCaseHoleDist,0,0]) cylinder(r=1.6,h=adapterZ+0.1);
+    }
+    translate([7,25,0]) rpiCaseHoles();
+  }
+}
+
+
+adapter();
+/* rpi_holder(); */
+
+
 
 
 /* test */

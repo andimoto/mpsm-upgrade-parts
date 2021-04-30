@@ -93,6 +93,8 @@ module carrier()
   }
 }
 
+
+
 adapterZ=4;
 
 module adapterarm()
@@ -109,14 +111,14 @@ module rpiCaseHoles()
   union()
   {
     cylinder(r=1.4,h=adapterZ+0.1);
-    translate([7+55+7,0,0]) cylinder(r=1.4,h=adapterZ+0.1);
+    translate([14+55+7,0,0]) cylinder(r=1.4,h=adapterZ+0.1);
   }
 
   translate([0,75,0])
   union()
   {
     cylinder(r=1.4,h=adapterZ+0.1);
-    translate([7+55+7,0,0]) cylinder(r=1.4,h=adapterZ+0.1);
+    translate([14+55+7,0,0]) cylinder(r=1.4,h=adapterZ+0.1);
   }
 }
 
@@ -128,8 +130,8 @@ module adapter()
     union()
     {
       adapterarm();
-      translate([62+7,0,0]) adapterarm();
-      translate([14,0,0]) cube([62-7,10,adapterZ]);
+      translate([62+14,0,0]) adapterarm();
+      translate([14,0,0]) cube([55+7,10,adapterZ]);
 
       /* stab */
       translate([14,25,0])
@@ -139,7 +141,7 @@ module adapter()
         translate([0,50,0]) cylinder(r=14/2,h=adapterZ);
       }
       /* stab */
-      translate([14+55,25,0])
+      translate([14+55+7,25,0])
       hull()
       {
         cylinder(r=14/2,h=adapterZ);
@@ -147,7 +149,7 @@ module adapter()
       }
 
     }
-    translate([14+(55-32)/2,5,0])
+    translate([14+(55+7-32)/2,5,0])
     union()
     {
       cylinder(r=1.5,h=adapterZ+0.1);
@@ -157,16 +159,25 @@ module adapter()
   }
 }
 
+module leftOffsetAdapter()
+{
+  translate([0,mountThickness-2,plateThickness])
+  difference() {
+    cube([(holderX-extruderX)/2,2,screwPrinterGap+screwPrintergapExtra]);
+    translate([(holderX-extruderX)/4-1,0,(screwPrinterGap+screwPrintergapExtra)/2+1.5]) rotate([-90,0,0]) cylinder(r=1.6, h=10, center=false);
+  }
+}
 
-translate([100,0,0])
+
+/* translate([100,0,0]) */
 adapter();
 
 /* normal size */
-carrier();
+/* carrier(); */
 
 /* printable on MPSM print bed */
-translate([-100,0,0])
+/* translate([-100,0,0])
 difference() {
   carrier();
   translate([0,110,0]) cube([holderX,holderY,30]);
-}
+} */

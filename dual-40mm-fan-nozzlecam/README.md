@@ -1,8 +1,8 @@
-# Dual 40mm fan shroud for Monoprice Selet Mini (v2)
+# Dual 40mm fan shroud with Nozzle Cam for Monoprice Selet Mini (v2) No Supports!
 
 __More fans go brrrrr^2!!!__
 
-Replacement part for Monoprice Select Mini (V2) to hold two 40mm fans. This gives an extra fan for part cooling & hotend cooling.
+Replacement part for Monoprice Select Mini (V2) to hold two 40mm fans. This gives an extra fan for part cooling & hotend cooling. Additionally it carries a tube to fit a 8mm usb endoscope as nozzle cam! Also a version without nozzle cam is available.
 
 
 __With Nozzle Cam__

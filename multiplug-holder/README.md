@@ -1,11 +1,15 @@
 # Multiplug Holder for double row multiplugs
 
 I wanted to mount my multiplug onto the inner wall of my ikea sideboard. So I designed this holder.
+Can be printed without supports if printer can handle some bridging. Bridging is about 10cm long.
 
 <br>
 
 ![](001.png)
 ![](002.png)
+
+![](003.jpg)
+![](004.jpg)
 
 # LICENSE
 

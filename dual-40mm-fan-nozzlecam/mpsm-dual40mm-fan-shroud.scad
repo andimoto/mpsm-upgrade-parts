@@ -96,7 +96,7 @@ module fanHolder(nozzleCam=true) {
         hull()
         {
           translate([-nozzleBlowOutX/2-0.5,0,1]) cube([nozzleBlowOutX+1,1,3]);
-          translate([-nozzleBlowOutX/2-0.5,-2,-0.4]) rotate([15,0,0]) cube([nozzleBlowOutX+1,1,1.5]);
+          translate([-nozzleBlowOutX/2-0.5,-2.5,-0.8]) rotate([15,0,0]) cube([nozzleBlowOutX+1,1,3]);
         }
       }
       sphere(r=edgeR);
@@ -115,7 +115,7 @@ module fanHolder(nozzleCam=true) {
       hull()
       {
         translate([-nozzleBlowOutX/2,0,1]) cube([nozzleBlowOutX,1,2]);
-        translate([-nozzleBlowOutX/2,-2-edgeR-0.2,-0.4]) rotate([14,0,0]) cube([nozzleBlowOutX,1,1.4]);
+        translate([-nozzleBlowOutX/2,-5-edgeR+1,-1]) rotate([14,0,0]) cube([nozzleBlowOutX,1,2]);
       }
     }
 

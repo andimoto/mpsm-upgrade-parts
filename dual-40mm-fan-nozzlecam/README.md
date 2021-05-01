@@ -14,6 +14,9 @@ __Without NozzleCam__
 ![](003.png)
 ![](004.png)
 
+__*Printable on Monoprice Select Mini !!!*__
+![](005.png)
+
 <br>
 
 *Note: some minor changes at the part cooling output have been made. Images are older but still look same!*

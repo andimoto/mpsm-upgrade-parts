@@ -23,6 +23,22 @@ Use 3mm screws. For mounting the carrier on the MPSM I used M3x20 and for the re
 ![](001.png)
 ![](002.png)
 
+<br>
+
+![](pics/001.jpg)
+
+![](pics/002.jpg)
+
+![](pics/003.jpg)
+
+![](pics/004.jpg)
+
+![](pics/005.jpg)
+
+![](pics/006.jpg)
+
+![](pics/007.jpg)
+
 # LICENSE
 
 <dl>

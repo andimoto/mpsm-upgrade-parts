@@ -14,6 +14,24 @@ __Without NozzleCam__
 ![](003.png)
 ![](004.png)
 
+<br>
+
+*Note: some minor changes at the part cooling output have been made. Images are older but still look same!*
+
+![](pics/001.jpg)
+
+![](pics/002.jpg)
+
+![](pics/003.jpg)
+
+![](pics/004.jpg)
+
+![](pics/005.jpg)
+
+![](pics/006.jpg)
+
+![](pics/007.jpg)
+
 
 
 # LICENSE

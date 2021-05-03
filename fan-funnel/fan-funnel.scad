@@ -59,7 +59,6 @@ module fanOut()
         {
           translate([wallThickness,wallThickness,0]) cube([fanXY-wallThickness*2,fanXY-wallThickness*2,fanZ]);
           translate([fanXY/2,wallThickness,cutoutHoleR]) rotate([-90,0,0]) cylinder(r=cutoutHoleR-wallThickness/2,h=fanXY-wallThickness*2);
-
         }
       }
       translate([fanXY/2,-cutoutTubeLen,cutoutHoleR]) rotate([-90,0,0]) cylinder(r=cutoutHoleR,h=cutoutTubeLen);

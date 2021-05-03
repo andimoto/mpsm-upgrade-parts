@@ -1,4 +1,4 @@
-$fn=50;
+$fn=150;
 
 layerHeigth=0.2;
 

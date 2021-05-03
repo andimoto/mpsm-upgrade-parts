@@ -15,7 +15,7 @@ screwDistance=71.4;
 fanHole=76;
 frontPlateThickness=4;
 
-module noctua80screwHoles()
+module mountingScrewHoles()
 {
   cylinder(r=screwR, h=frontPlateThickness, center=false);
   translate([screwDistance,0,0]) cylinder(r=screwR, h=frontPlateThickness, center=false);
@@ -24,9 +24,9 @@ module noctua80screwHoles()
 }
 
 /* translate([(fanXY-screwDistance)/2,(fanXY-screwDistance)/2,0])
-noctua80screwHoles(); */
+mountingScrewHoles(); */
 
-module noctua80()
+module fanMountingPlate()
 {
   difference() {
     cube([fanXY,fanXY,frontPlateThickness]);
@@ -35,11 +35,11 @@ module noctua80()
       cylinder(r=fanHole/2, h=frontPlateThickness, center=false);
 
     translate([(fanXY-screwDistance)/2,(fanXY-screwDistance)/2,0])
-      noctua80screwHoles();
+      mountingScrewHoles();
   }
 }
 
-/* noctua80(); */
+/* fanMountingPlate(); */
 
 
 module fanOut()
@@ -48,7 +48,7 @@ module fanOut()
   difference() {
     union()
     {
-      noctua80();
+      fanMountingPlate();
       difference() {
         hull()
         {

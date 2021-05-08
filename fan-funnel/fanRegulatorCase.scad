@@ -24,6 +24,10 @@ screwPlateZ=4;
 screwR=3/2;
 screwHeadR=5/2;
 
+lidFixRad=1;
+lidFixXMov=0.5;
+
+
 module fanRegCase()
 {
   difference() {
@@ -40,6 +44,12 @@ module fanRegCase()
 
     translate([wallThickness,pcbY+wallThickness,wallThickness+pcbZ-pcbThickness])
       cube([pcbX,wallThickness,potiZ+pcbThickness]);
+
+    /* fixBlock */
+    translate([wallThickness,0,pcbZ+potiZ-wallThickness])
+      lidFixBlock();
+    translate([wallThickness,pcbY+wallThickness*2-potiYtrans,pcbZ+potiZ-wallThickness])
+      lidFixBlock();
   }
 
   translate([0,-screwPlateY,0]) screwPlate();
@@ -58,13 +68,34 @@ module screwPlate()
 }
 /* translate([0,-screwPlateY,0]) screwPlate(); */
 
+module lidFixBlock()
+{
+  union()
+  {
+    translate([0,0,0])
+      cube([pcbX,potiYtrans,wallThickness*2]);
+    translate([lidFixXMov,0,wallThickness]) rotate([-90,0,0])
+      cylinder(r=lidFixRad,h=potiYtrans);
+    translate([pcbX-lidFixXMov,0,wallThickness]) rotate([-90,0,0])
+      cylinder(r=lidFixRad,h=potiYtrans);
+  }
+}
+/* lidFixBlock(); */
+
 module fanRegLid()
 {
-  translate([0,0,caseZ+wallThickness]) cube([pcbX+wallThickness*2,pcbY+wallThickness*2,wallThickness]);
-  translate([wallThickness,0,wallThickness+pcbZ+usbPort1Z]) cube([pcbX,potiYtrans,wallThickness*3]);
-  translate([wallThickness,pcbY+wallThickness*2-potiYtrans,wallThickness+pcbZ+usbPort1Z]) cube([pcbX,potiYtrans,wallThickness*3]);
+  translate([0,0,wallThickness*2]) cube([pcbX+wallThickness*2,pcbY+wallThickness*2,wallThickness]);
+
+  translate([wallThickness,0,0])
+    lidFixBlock();
+
+  translate([wallThickness,pcbY+wallThickness*2-potiYtrans,0])
+    lidFixBlock();
 }
 
 
+
 fanRegCase();
-translate([0,0,20]) fanRegLid();
+
+translate([-10,0,wallThickness*3]) rotate([0,180,0])
+translate([0,0,0]) fanRegLid();

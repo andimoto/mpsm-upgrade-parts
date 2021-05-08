@@ -6,7 +6,10 @@ __40mm Dual Fan Shroud with and without Nozzle Cam__
 ![](dual-40mm-fan-nozzlecam/001.png)
 ![](dual-40mm-fan-nozzlecam/003.png)
 
-__Carrier Plate for RPi Displays, etc.__
+__Fan-Funnel__
+![](fan-funnel/001.png)
+
+__Carrier Plate for RPi Displays & Cases, etc.__
 ![](rpi-display-case-carrier/001.png)
 
 __Small Tool Holder for an Hex Key and (Pliers)__

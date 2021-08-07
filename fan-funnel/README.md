@@ -20,6 +20,8 @@ This is an case for a fan regulator pcb which can be found on amazon, ebay, etc.
 
 ![](fanReg001.png)
 ![](fanReg002.jpg)
+![](fanReg003.jpg)
+![](fanReg004.jpg)
 
 
 
